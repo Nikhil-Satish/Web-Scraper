@@ -1,0 +1,114 @@
+.head{
+  text-align: center;
+  font-weight: bold;
+  /* font-weight: 800; */
+
+}
+body {
+  font-family: "Montserrat";
+  /* padding-left: 100px; */
+  /* text-align: center; */
+}
+
+.textbox{
+  padding: 50px;
+}
+
+.feed{
+  padding-left: 100px;
+}
+
+.input-link{
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat-Bold";
+}
+
+p {
+  color: #8f8f8f;
+}
+
+li:hover{
+  cursor: pointer;
+}
+/* Headings */
+
+.big-heading {
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+
+  /* font-family: 'Dosis', sans-serif;
+  font-size: 3.5rem;
+  line-height: 1.5; */
+  /* font-family: "Montserrat-Black"; */
+}
+
+.container-fluid{
+  padding: 7% 15%;
+}
+
+/* Sections */
+
+/* Navigation Bar */
+
+.navbar {
+  padding: 0 0 4.5rem;
+}
+
+.navbar-brand {
+  font-family: 'Dosis', sans-serif;
+  font-size: 3.5rem;
+  /* font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold; */
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-family: "Montserrat-Light";
+}
+
+/* Title Section */
+
+#title {
+  background-color: #0066ff;
+  color: #fff;
+  text-align: left;
+}
+
+#title .container-fluid {
+  padding: 3% 15% 7%;
+}
+
+.search-bar{
+  text-align: center;
+}
+
+
+input[type=text]{
+    width:40%;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+  }
+
+  input[type=text]:focus{
+    border-color:dodgerBlue;
+    box-shadow:0 0 8px 0 dodgerBlue;
+  }
+
+#header h1{
+  /* padding: 0 150px; */
+  line-height: 1.5;
+}
