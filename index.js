@@ -1,5 +1,6 @@
 const feedDisplay = document.querySelector('.feed')
-const loadBtn = document.querySelector('.btn');
+// const loadBtn = document.querySelector('.btn');
+const loadBtn = document.getElementById('#loadBtn')
 const searchBtn = document.getElementById('#searchBtn')
 const clearSearchBtn = document.getElementById('#clearSearchBtn')
 const searchText = document.getElementById('#searchText')
@@ -22,11 +23,16 @@ function loadScrapper(url){
   fetch('http://localhost:3000/',options)
   .then(response => response.json())
       .then(data => {
-          const homeDisplay = `<div><h2>` + data.title + `</h2><h4>` + data.date + `</h4><h3>Contact Details</h3><a href= \'`
-                +data.contactUrl+ `\' > ` +data.contactUrl+ `</a><h3>Subscription link</h3><a href= \' ` + data.subscribe + ` \' > ` +data.subscribe+ `</a>`
-          feedDisplay.insertAdjacentHTML("afterbegin", homeDisplay)
+          const homeDisplay = `<div class=\'head\' ><h3>` + data.title + `</h3><h4>` + data.date + `</h4></div>`
           newsCollection = data.newsCollection
-          for(var i = 0;i<data.newsCollection.length;i++){
+          // const headlines = '<div><h6>Headlines : '+data.newsCollection[0][0].news+'</h6></div>'
+          const headlines = `<div><h6>Headlines :  <a href= \' ` + data.newsCollection[0][0].link + ` \' > ` +data.newsCollection[0][0].news+ `</a> </h6> </div>`
+          const genreTitle = '<div><h6>Genre (Click on any genre to expand): </h6></div'
+          list.insertAdjacentHTML("beforebegin",genreTitle)
+          feedDisplay.insertAdjacentHTML("afterbegin", headlines)
+          feedDisplay.insertAdjacentHTML("afterbegin", homeDisplay)
+
+          for(var i = 1;i<data.newsCollection.length;i++){
             if(i>=6 && i<=9){
               continue;
             }
@@ -35,11 +41,26 @@ function loadScrapper(url){
             const ele = data.newsCollection[i]
             var newsItem = ''
             ele.forEach(item =>{
-              newsItem += `<h3>` + item.news + `</h3><a href= \' ` + item.link + ` \' > ` +item.link+ `</a>`
+              newsItem += `<p>` + item.news + `: <a href= \' ` + item.link + ` \' > ` +item.link+ `</a></p>`
             })
             const genreItem = '<li class= '+str+'>' +genre+ '<div style=' +'display:none'+ '>'+newsItem+'</div></li>'
             list.insertAdjacentHTML("beforeend", genreItem)
           }
+
+          const afterFeed = `<h6>Contact Us : <a href= \'`
+                +data.contactUrl+ `\' > ` +data.contactUrl+ `</a></h6><h6>Subscription
+                <a href= \' ` + data.subscribe + ` \' > ` +data.subscribe+ `</a></h6>`
+
+          var mediaLinks = '<h6>Social Media :</h6><ol>'
+          data.socialMediaLinks.forEach(media =>{
+            mediaLinks += `<li><a href= \' ` + media + ` \' > ` +media+ `</a></li>`
+          })
+          mediaLinks += '</ol>'
+          feedDisplay.insertAdjacentHTML("beforeend", afterFeed)
+
+          feedDisplay.insertAdjacentHTML("beforeend", mediaLinks)
+
+
       })
       .catch(err => console.log(err))
 }
@@ -78,14 +99,6 @@ loadBtn.addEventListener('click',async function() {
     return;
   }
 
-  if (feedDisplay.style.display === "none") {
-    feedDisplay.style.display = "block";
-    loadBtn.innerHTML = "Collapse";
-  } else {
-    feedDisplay.style.display = "none";
-    loadBtn.innerHTML = "Expand";
-  }
-  console.log("URL sent");
   if(count==0){
     loadScrapper(url);
   }
@@ -102,8 +115,9 @@ searchBtn.addEventListener('click',function(){
     }
     else{
       var item = ''
+      item += '<h6>Search Results</h6>'
       searchList.forEach(element =>{
-        item += `<h3>` + element.news + `</h3><a href= \' ` + element.link + ` \' > ` +element.link+ `</a>`
+        item += `<p>` + element.news + `: <a href= \' ` + element.link + ` \' > ` +element.link+ `</a></p>`
       })
       ele.insertAdjacentHTML("beforeend", item)
     }
@@ -113,19 +127,15 @@ searchBtn.addEventListener('click',function(){
 clearSearchBtn.addEventListener('click',function(){
   document.querySelector('.search-result').innerHTML = ''
 })
-// function sendUrl(url){
-//   const data = {text : url}
-//   const options = {
-//     method : 'POST',
-//     headers : {
-//       'Content-Type' : 'application/json'
-//     },
-//     body : JSON.stringify(data)
-//   };
-//   fetch('http://localhost:3000/',options)
-//   .then(response => response.json())
-//   .then(data => {
-//     // console.log(data.newsCollection);
-//     console.log(data.title);
-//   })
+// if(count>=1){
+//   feedDisplay.innerHTML = '<div class=\'search-result\'></div><ol class=\'list\' ></ol>'
 // }
+// feedDisplay.innerHTML = ''
+// if (feedDisplay.style.display === "none") {
+//   feedDisplay.style.display = "block";
+//   loadBtn.innerHTML = "Collapse";
+// } else {
+//   feedDisplay.style.display = "none";
+//   loadBtn.innerHTML = "Expand";
+// }
+// console.log("URL sent");
