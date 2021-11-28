@@ -5,7 +5,10 @@
     <title>Web scraper</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap" rel="stylesheet">
 
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -14,16 +17,14 @@
     <!-- Font Awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
-    <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <!-- <div id="header">
-      <h1 line-height : 2;>The Web Scraper</h1>
-    </div> -->
 
     <section class="colored-section" id="title">
       <div class="container-fluid">
@@ -40,40 +41,38 @@
 
         </nav>
 
-
-        <!-- Title -->
-
         <div class="row">
 
           <div class="col-lg-6">
             <h1 class="big-heading">Scrap useful data from any website!</h1>
           </div>
 
-          <!-- <div class="col-lg-6">
-            <img class="title-image" src="images/iphone6.png" alt="iphone-mockup">
-          </div> -->
-
         </div>
 
       </div>
     </section>
 
-    <input id="#loadText" type="text" class="load" placeholder="Enter web address">
-    <button id="#loadBtn" type="button" class="btn btn-primary load float-right">Load</button>
-    <!-- <button type="button" class="btn" >Load data</button> -->
-    <div class="feed" style="display:none" >
+    <div class="textbox">
+      <span class="input-link">
+        <input id="#loadText" type="text" placeholder="Enter web address">
+        <button id="#loadBtn" type="button" class="btn btn-success ">Load</button>
+      </span>
 
-      <ol class="list" >
+      <span class="search-bar float-right">
+        <input id="#searchText" type="text" class="search" placeholder="Search text">
+        <button id="#searchBtn" type="button" class="btn btn-success search ">Search</button>
+        <button id="#clearSearchBtn" type="button" class="btn btn-danger search ">Clear</button>
+      </span>
+    </div>
 
-      </ol>
-
-      <input id="#searchText" type="text" class="search" placeholder="Search text">
-      <button id="#searchBtn" type="button" class="btn btn-primary search float-right">Search</button>
-      <button id="#clearSearchBtn" type="button" class="btn btn-danger search float-right">Clear</button>
-
+    <!-- Feed Content -->
+    <div class="feed" >
       <div class="search-result">
 
       </div>
+      <ol class="list" >
+
+      </ol>
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
