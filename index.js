@@ -1,5 +1,4 @@
 const feedDisplay = document.querySelector('.feed')
-// const loadBtn = document.querySelector('.btn');
 const loadBtn = document.getElementById('#loadBtn')
 const searchBtn = document.getElementById('#searchBtn')
 const clearSearchBtn = document.getElementById('#clearSearchBtn')
@@ -10,6 +9,7 @@ var newsCollection
 var count = 0;
 const home = []
 
+// To send the url to backend and receive the json data
 function loadScrapper(url){
   count++;
   const data = {text : url}
@@ -25,13 +25,13 @@ function loadScrapper(url){
       .then(data => {
           const homeDisplay = `<div class=\'head\' ><h3>` + data.title + `</h3><h4>` + data.date + `</h4></div>`
           newsCollection = data.newsCollection
-          // const headlines = '<div><h6>Headlines : '+data.newsCollection[0][0].news+'</h6></div>'
           const headlines = `<div><h6>Headlines :  <a href= \' ` + data.newsCollection[0][0].link + ` \' > ` +data.newsCollection[0][0].news+ `</a> </h6> </div>`
           const genreTitle = '<div><h6>Genre (Click on any genre to expand): </h6></div'
           list.insertAdjacentHTML("beforebegin",genreTitle)
           feedDisplay.insertAdjacentHTML("afterbegin", headlines)
           feedDisplay.insertAdjacentHTML("afterbegin", homeDisplay)
 
+          // Storing the data as html for frontend
           for(var i = 1;i<data.newsCollection.length;i++){
             if(i>=6 && i<=9){
               continue;
@@ -65,6 +65,7 @@ function loadScrapper(url){
       .catch(err => console.log(err))
 }
 
+// To toggle display of details under a particular genre
 document.addEventListener('click',function(e){
     if (e.target && e.target.tagName=="LI" ){
       if(e.target.childNodes[1].attributes[0].value=="display:none"){
@@ -92,6 +93,7 @@ function search(word){
   return searchList;
 }
 
+// Load button to load data
 loadBtn.addEventListener('click',async function() {
   const url = document.getElementById('#loadText').value
   if(url == ''){
@@ -127,15 +129,3 @@ searchBtn.addEventListener('click',function(){
 clearSearchBtn.addEventListener('click',function(){
   document.querySelector('.search-result').innerHTML = ''
 })
-// if(count>=1){
-//   feedDisplay.innerHTML = '<div class=\'search-result\'></div><ol class=\'list\' ></ol>'
-// }
-// feedDisplay.innerHTML = ''
-// if (feedDisplay.style.display === "none") {
-//   feedDisplay.style.display = "block";
-//   loadBtn.innerHTML = "Collapse";
-// } else {
-//   feedDisplay.style.display = "none";
-//   loadBtn.innerHTML = "Expand";
-// }
-// console.log("URL sent");
