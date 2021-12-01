@@ -11,3 +11,6 @@ Start the server by the command 'npm run start'. Once the message 'Server starte
 1. Clean user interface using Bootstrap
 2. Search bar to get the desired news headlines and the links.
 3. Data is well organised in both frontend and backend
+
+## Demo video of the Project
+https://drive.google.com/file/d/1skLsJDvCDQJnm-tKqg6RlKjOuTIybIFD/view?usp=sharing
