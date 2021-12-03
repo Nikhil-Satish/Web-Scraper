@@ -1,4 +1,5 @@
 # Web-Scraper
+<img align="centre" width="250" height="250" src="https://user-images.githubusercontent.com/77330133/144661360-9e465ca4-527e-4baa-bcff-beb02ddf6be9.jpg">
 This project is a Web-Scraper which is used to scrap useful data from websites and display them to the user. 'https://indianexpress.com/' is the demo website from which data, which includes a variety of news headlines and the respective links, are extracted and displayed in the frontend. This project uses NodeJs for backend and HTML,CSS and Javascript for frontend.
 
 ## Setup Instructions
